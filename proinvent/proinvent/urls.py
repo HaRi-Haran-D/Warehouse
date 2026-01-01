@@ -23,4 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('appinvent.urls')),
     path('items/', include('items.urls')),
+    path('dashboard/', include('dashboard.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

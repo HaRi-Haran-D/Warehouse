@@ -33,16 +33,28 @@
           {% if request.user.is_authenticated %}
           <ul class="navbar-nav d-flex justify-content-end gap-3">
             <li>
+              <a href="{% url 'dashboard:index' %}" class="btn btn-outline-light">Dashboard</a>
+            </li>
+            <li>
               <a href="#" class="btn btn-outline-light">
                 <i class="bi bi-person me-1"></i>{{ request.user.username }}
               </a>
             </li>
-            <li><a href="" class="btn btn-outline-light">Logout</a></li>
+            <li>
+              <a href="" class="btn btn-outline-light">Logout</a>
+            </li>
           </ul>
           {% else %}
           <ul class="navbar-nav d-flex justify-content-end gap-3">
-            <li><a href="{% url 'appinvent:signup' %}" class="btn btn-outline-light">Sign Up</a></li>
-            <li><a href="{% url 'appinvent:login' %}" class="btn btn-outline-light">Login</a></li>
+            <li>
+              <a href="{% url 'dashboard:index' %}" class="btn btn-outline-light">Dashboard</a>
+            </li>
+            <li>
+              <a href="{% url 'appinvent:signup' %}" class="btn btn-outline-light">Sign Up</a>
+            </li>
+            <li>
+              <a href="{% url 'appinvent:login' %}" class="btn btn-outline-light">Login</a>
+            </li>
           </ul>
           {% endif %}
         </div>

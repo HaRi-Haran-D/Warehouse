@@ -1,0 +1,28 @@
+{% extends 'appinvent/base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <div class="px-4 py-5 bg-light rounded">
+        <h2 class="mb-3 text-center">My Items</h2>
+        <div class="container-fluid">
+            <div class="row row-cols-6 gap-3">
+                {% for item in items %}
+                    <div class="col card mb-3" style="width: 18rem;">
+                        <a href="{% url 'items:detail' item.id %}" class="text-decoration-none">
+                            <div>
+                                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                            </div>
+                            <div class="card-body text-center text-dark">
+                                <h5 class="card-title">{{ item.name }}</h5>
+                                <p class="card-text m-0"><strong>Price:</strong> ₹{{ item.price }}</p>
+                                <p class="card-text"><small class="text-muted">Category: {{ item.category.name }}</small></p>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>             
+        </div>
+    </div>
+{% endblock %}
+
+
