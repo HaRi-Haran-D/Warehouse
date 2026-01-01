@@ -29,6 +29,9 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'items:new' %}">New</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'items:list' %}">Browse</a>
+            </li>
           </ul>
           {% if request.user.is_authenticated %}
           <ul class="navbar-nav d-flex justify-content-end gap-3">

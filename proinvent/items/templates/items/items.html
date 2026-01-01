@@ -1,0 +1,44 @@
+{% extends 'appinvent/base.html' %}
+{% block title %}Items{% endblock %}
+
+{% block content %}
+<div class="container-fluid pb-3 row row-cols-4 mt-4">
+    <div class="col">
+        <form action="{% url 'items:list' %}" method="get">
+            <input type="text" name="query" class="w-100 py-2 px-4 border rounded mb-3" value="{{ query }}" placeholder="Search something...">
+            <button class="btn btn-outline-secondary">Search</button>
+        </form>
+        <div class="pt-3">
+            <p class="fs-2 m-0">Categories</p>
+            <ul>
+                {% for category in categories %}
+                <li class="text-decoration-none list-group px-3 py-2 rounded {% if category.id == category_id %} bg-secondary {% endif %}">
+                   <a href="{% url 'items:list' %}?query={{ query}} &category={{category.id}}" class="text-decoration-none text-dark">{{ category.name}}</a> 
+                </li>
+                {% endfor %}
+                <li class="list-unstyled">
+                        <a href="{% url 'items:list' %}" class="btn btn-outline-secondary">Clear</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-9">
+        <div class="row row-cols-2 gap-3">
+            {% for item in items %}
+                <div class="col card mb-3" style="width: 18rem;">
+                    <a href="{% url 'items:detail' item.id %}" class="text-decoration-none">
+                        <div>
+                            <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                        </div>
+                        <div class="card-body text-center text-dark">
+                            <h5 class="card-title">{{ item.name }}</h5>
+                            <p class="card-text m-0"><strong>Price:</strong> ₹{{ item.price }}</p>
+                            <p class="card-text"><small class="text-muted">Category: {{ item.category.name }}</small></p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>             
+    </div>
+</div>
+{% endblock %}
