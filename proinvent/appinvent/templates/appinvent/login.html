@@ -1,0 +1,32 @@
+{% extends 'appinvent/base.html' %}
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<section class="container d-flex flex-column justify-content-center align-items-center">
+    <div class="p-4 mt-4 text-center bg-white rounded-3" style="max-width: 400px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            <table class="mb-3">
+                <tr>
+                    <td><label class="form-label">Username:</label></td>
+                    <td>{{ form.username }}</td>
+                </tr>
+                <tr>
+                    <td><label class="form-label">Password:</label></td>
+                    <td>{{ form.password }}</td>
+                </tr>
+            </table>
+            {% if form.errors or form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {% for field in form %}
+                        {{ form.errors }}
+                    {% endfor %}
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+            <button type="submit" class="btn btn-secondary">Login</button>
+        </form>
+    </div>
+</section>
+{% endblock %}
