@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'appinvent',
     'items',
     'dashboard',
+    'conversation',
 ]
 
 MIDDLEWARE = [
