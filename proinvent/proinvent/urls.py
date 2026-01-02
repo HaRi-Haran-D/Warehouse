@@ -24,5 +24,5 @@ urlpatterns = [
     path('',include('appinvent.urls')),
     path('items/', include('items.urls')),
     path('dashboard/', include('dashboard.urls')),
-    path('inbox/', include('conversatio.urls')),
+    path('inbox/', include('conversation.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,27 @@
+{% extends 'appinvent/base.html' %}
+{% block title %}Inbox{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="">Inbox</h1>
+        <div class="w-100 h-25">
+            {% for conversation in conversations %}
+                <a href="{% url 'conversation:detail' conversation.id %}" class="text-decoration-none">
+                    <div class="d-flex p-2 text-light {% if message.created_by == request.user %}bg-primary{% else %}bg-success{% endif %} rounded">
+                        <img src="{{ conversation.item.image.url }}" class="rounded" height="100" alt="">
+                        <div class="mx-3">
+                            {% for member in conversation.members.all %}
+                                {% if member != request.user %}
+                                    <p class="mb-2">
+                                        <strong>{{ member.username }} | {{ conversation.modified_at }}</strong>
+                                    </p>
+                                    <p>{{ conversation.item }}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

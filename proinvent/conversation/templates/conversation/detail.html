@@ -1,0 +1,20 @@
+{% extends 'appinvent/base.html' %}
+{% block title %}Inbox{% endblock %}
+
+{% block content %}
+    <div class="container mt-3">
+        <h1 class="">Conversation</h1>
+        <div class="w-100 h-25">
+            {% for message in conversation.messages.all %}
+                <div class="d-flex bg-white rounded p-2">
+                    <p class="m-0"><strong>{{ message.created_by.username }}</strong>@ {{ message.created_at }}</p>
+                    <p class="m-0">{{ message.content }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+    </form>
+{% endblock %}

@@ -20,7 +20,7 @@
                             <a href="{% url 'items:delete' item.id %}" class="btn btn-outline-danger mt-3">Delete</a>
                         </div>
                     {% else %}
-                        <a href="#" class="btn btn-secondary">Add to Cart</a>
+                        <a href="{% url 'conversation:new' item.id %}" class="btn btn-secondary">Contact</a>
                     {% endif %}
                 </div>
             </div>
