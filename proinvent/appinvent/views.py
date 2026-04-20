@@ -24,4 +24,4 @@ def signup(request):
 
 def logout_user(request):
     logout(request)
-    return render(request, 'appinvent/index.html')
+    return render(request, 'appinvent/login.html')
