@@ -45,6 +45,7 @@
               <a href="#" class="btn btn-outline-light">
                 <i class="bi bi-person me-1"></i>{{ request.user.username }}
               </a>
+              <a href="{% url 'appinvent:logout' %}" class="btn btn-outline-danger">Logout</a>
             </li>
           </ul>
           {% else %}

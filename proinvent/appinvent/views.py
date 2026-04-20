@@ -22,6 +22,6 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'appinvent/signup.html', {'form': form})
 
-# def logout_user(request):
-#     logout(request)
-#     return render(request, 'appinvent/index.html')
+def logout_user(request):
+    logout(request)
+    return render(request, 'appinvent/index.html')
